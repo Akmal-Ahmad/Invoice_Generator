@@ -207,7 +207,7 @@ export default function Steps() {
     if (!user?.email) {
       setToastMessage("You need to log in to track payments");
     } else {
-      window.location.href = "http://127.0.0.1:5500/new-app/mern-app/frontend/hero/payments.html";
+      window.location.href = "https://invoice-generator-akmal-ahmad.netlify.app/payments.html";
     }
   };
 
