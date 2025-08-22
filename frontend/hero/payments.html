@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Tracker - InvoiceGen</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="payments.css">
+
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <h1><a href="hero.html" class="brand-link">InvoiceGen<sup>®</sup></a></h1>
+    <div class="user-info">
+      <div class="user-details">
+        <div class="user-email" id="userEmail">user@example.com</div>
+        <div class="user-status">Logged In</div>
+      </div>
+      <button class="btn btn-danger" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Title -->
+  <section class="page-title">
+    <h2><i class="fas fa-chart-line"></i> Payment Tracker</h2>
+  </section>
+
+  <div class="container">
+    <!-- Dashboard Cards -->
+    <div class="dashboard-cards">
+      <div class="card card-total">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <div class="card-title">Total Invoices</div>
+        <div class="card-value" id="totalInvoices">0</div>
+      </div>
+      <div class="card card-paid">
+        <i class="fas fa-check-circle"></i>
+        <div class="card-title">Total Payment</div>
+        <div class="card-value" id="totalPaid">$0.00</div>
+      </div>
+      <div class="card card-pending">
+        <i class="fas fa-clock"></i>
+        <div class="card-title">Pending Payments</div>
+        <div class="card-value" id="totalPending">$0.00</div>
+      </div>
+      <div class="card card-overdue">
+        <i class="fas fa-exclamation-circle"></i>
+        <div class="card-title">Overdue</div>
+        <div class="card-value" id="totalOverdue">$0.00</div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <div class="filter-group">
+        <label for="statusFilter">Payment Status</label>
+        <select id="statusFilter" onchange="filterInvoices()">
+          <option value="all">All Statuses</option>
+          <option value="paid">Paid</option>
+          <option value="partially_paid">Partially Paid</option>
+          <option value="to_be_paid">To Be Paid</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="dateFilter">Due Date</label>
+        <select id="dateFilter" onchange="filterInvoices()">
+          <option value="all">All Dates</option>
+          <option value="week">Next 7 Days</option>
+          <option value="month">Next 30 Days</option>
+          <option value="overdue">Overdue</option>
+        </select>
+      </div>
+      
+      <div class="filter-group">
+        <label for="searchInput">Search</label>
+        <input type="text" id="searchInput" onkeyup="filterInvoices()" placeholder="Invoice no or client">
+      </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <p>Loading invoices...</p>
+    </div>
+
+    <!-- Invoices Table -->
+    <div class="table-container">
+      <table class="invoice-table" id="invoiceTable" style="display: none;">
+        <thead>
+          <tr>
+            <th>Invoice No</th>
+            <th>Billed To</th>
+            <th>Grand Total</th>
+            <th>Amount Paid</th>
+            <th>Amount Remaining</th>
+            <th>Payment Status</th>
+            <th>Due Date</th>
+            <th>Created Date</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="invoiceBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Footer Actions -->
+    <div class="footer-actions">
+      <button class="btn btn-primary" onclick="refreshInvoices()">
+        <i class="fas fa-sync-alt"></i> Refresh
+      </button>
+      <button class="btn btn-warning" onclick="exportToCSV()">
+        <i class="fas fa-download"></i> Export to CSV
+      </button>
+    </div>
+  </div>
+
+  <script src="paylogic.js"> </script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvoiceGen</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header id="navbar">
+      <div class="logo">InvoiceGen<sup>®</sup></div>
+      <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact Us</a>
+        <a href="payments.html" id="trackPaymentsBtn">Track Payments</a>
+        <a href="#" id="loginLink">Login</a>
+        <button class="btn btn-danger" id="logoutBtn" style="display: none;">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+      </nav>
+    </header>
+
+    <main id="page-content">
+      <section class="hero">
+        <div class="hero-text">
+          <h1>InvoiceGen<sup>®</sup></h1>
+          <h2>Grow Your Business</h2>
+          <a href="http://localhost:3000" class="cta-btn">Get Started</a>
+        </div>
+        <div class="hero-image">
+          <video autoplay muted playsinline>
+            <source src="test.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </section>
+
+      <section id="solutions" class="solutions">
+        <div class="solutions-wrapper">
+          <h2>Our Solutions</h2>
+          <div class="solutions-container">
+            <a href="hero.html" class="solution-card">
+              <img src="invgen.png" alt="InvoiceGen" />
+              <h3>InvoiceGen<sup>®</sup></h3>
+              <p>
+                InvoiceGen<sup>®</sup> helps you design, generate, and manage
+                invoices with speed, style, and zero hassle.
+              </p>
+            </a>
+            <a
+              href="https://certificate-generator-locq.onrender.com"
+              class="solution-card"
+            >
+              <img src="certificate.png" alt="Certificate Generator" />
+              <h3>Certificate Generator</h3>
+              <p>
+                Easily create and share professional certificates for workshops,
+                events, and trainings with just one click.
+              </p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing">
+        <div class="pricing-wrapper">
+          <h2>Compare Pricing Plans</h2>
+          <div class="pricing-container">
+            <div class="pricing-card">
+              <h3>Starter</h3>
+              <p class="price">$0<span>/month</span></p>
+              <button class="btn">Get Started</button>
+              <p class="note">No credit card required</p>
+              <ul>
+                <li>✓ Unlimited invoices</li>
+                <li>✓ Basic template</li>
+                <li>✓ Payment Tracking</li>
+              </ul>
+            </div>
+            <div class="pricing-card best">
+              <div class="tag">Best Deal</div>
+              <h3>Pro</h3>
+              <p class="price">$2.99<span>/month</span></p>
+              <button class="btn tier-locked" data-tier="Pro">
+                Upgrade to Pro
+              </button>
+              <p class="note">30-day money-back guarantee</p>
+              <ul>
+                <li>✓ Unlimited invoices</li>
+                <li>✓ Premium templates</li>
+                <li>✓ Export as PDF & Word</li>
+                <li>✓ Priority support</li>
+                <li>✓ Payment Tracking</li>
+              </ul>
+            </div>
+            <div class="pricing-card">
+              <h3>Business Suite</h3>
+              <p class="price">$7.99<span>/month</span></p>
+              <button class="btn tier-locked" data-tier="Business Suite">
+                Get Business Suite
+              </button>
+              <p class="note">30-day money-back guarantee</p>
+              <ul>
+                <li>✓ InvoiceGen® + CertificateGen</li>
+                <li>✓ Unlimited invoices & certificates</li>
+                <li>✓ Cloud storage & backups</li>
+                <li>✓ Premium templates</li>
+                <li>✓ Export as PDF & Word</li>
+                <li>✓ Priority support</li>
+                <li>✓ Payment Tracking</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>InvoiceGen<sup>®</sup></h3>
+          <p>
+            Create professional invoices in seconds, track payments effortlessly,
+            and get paid faster.
+          </p>
+        </div>
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <a href="#">Home</a>
+          <a href="#solutions">Solutions</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact Us</a>
+        </div>
+        <div class="footer-column">
+          <h3>Contact</h3>
+          <p>Email: support@invoicegen.com</p>
+          <p>Phone: +91 234 567 8902</p>
+          <p>Location: Bihar, India</p>
+        </div>
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2025 InvoiceGen. All rights reserved.</div>
+    </footer>
+
+    <div class="modal" id="tierModal" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+        aria-describedby="modalDesc"
+      >
+        <h3 id="modalTitle">Notice</h3>
+        <p id="modalDesc">
+          Currently only the <strong>Free</strong> tier is available.
+        </p>
+        <button class="close-btn" id="closeModal">OK</button>
+      </div>
+    </div>
+
+    <div class="modal" id="authModal" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="authTitle"
+      >
+        <button id="closeAuth" aria-label="Close">&times;</button>
+        <h3 id="authTitle">Login</h3>
+        <form id="authForm">
+          <input type="email" id="email" placeholder="Email" required />
+          <div id="emailError" class="error-text"></div>
+          <input type="password" id="password" placeholder="Password" required />
+          <div id="passwordError" class="error-text"></div>
+          <button type="submit" class="btn" id="authSubmit">Login</button>
+        </form>
+        <p id="toggleAuthText">
+          Don't have an account? <a href="#" id="switchAuth">Register</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="modal" id="guestModal" aria-hidden="true">
+      <div
+        class="modal-content"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="guestTitle"
+      >
+        <button id="closeGuestModal" aria-label="Close">&times;</button>
+        <h3 id="guestTitle">Continue as Guest?</h3>
+        <p>
+          If you don't log in, you'll only be able to download invoices. You
+          won't be able to track payments or receive invoices via email.
+        </p>
+        <div class="modal-actions">
+          <button class="btn" id="guestLoginBtn">Login</button>
+          <button class="btn" id="guestContinueBtn">Continue as Guest</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
