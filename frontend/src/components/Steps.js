@@ -148,7 +148,7 @@ export default function Steps() {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/api/invoices", {
+      const response = await fetch("https://invoice-generator-backend-jg51.onrender.com/api/invoices", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -138,7 +138,7 @@ authForm.addEventListener("submit", async (e) => {
   if (!email || !password) return;
 
   try {
-    const res = await fetch("http://localhost:5000/api/auth", {
+    const res = await fetch("https://invoice-generator-backend-jg51.onrender.com/api/auth", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password, isLogin }),
@@ -225,7 +225,7 @@ document
   .forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const redirectURL = btn.getAttribute("href") || "http://localhost:3000";
+      const redirectURL = btn.getAttribute("href") || "https://invoice-generator-akmal-ahmad.netlify.app/";
       handleRedirect(redirectURL);
     });
   });
@@ -237,7 +237,7 @@ if (trackPaymentsBtn) {
     e.preventDefault();
     const redirectURL =
       trackPaymentsBtn.getAttribute("href") ||
-      "http://127.0.0.1:5500/new-app/mern-app/frontend/hero/payments.html";
+      "https://invoice-generator-akmal-ahmad.netlify.app/payments.html";
     handleRedirect(redirectURL);
   });
 }
