@@ -4,7 +4,7 @@ import ItemRow from "./ItemRow";
 export default function ItemsTable({ items, onChange, onAdd, onRemove, grandTotal }) {
   return (
     <div className="section">
-      <h2>Itemized / Services</h2>
+      <h2>Items / Services</h2>
       <table>
         <thead>
           <tr style={{ background: "#eaeaea" }}>
