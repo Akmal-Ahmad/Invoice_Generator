@@ -28,15 +28,18 @@ body {
   min-height: 100vh;
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background-color: var(--dark-color);
-  z-index: -2;
+/* Background for large screens only */
+@media (min-width: 1361px) {
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: var(--dark-color);
+    z-index: -2;
+  }
 }
 
 /* Utility Classes */
@@ -118,18 +121,18 @@ nav {
   display: flex;
   margin-left: auto;
   flex-wrap: wrap;
-  align-items: center;        /* Vertically center all nav items */
-  gap: 20px;                  /* Uniform horizontal spacing */
+  align-items: center;
+  gap: 20px;
 }
 
 /* Apply same styling for links and buttons inside nav */
 nav a,
 nav button {
-  display: inline-flex;       /* Inline flex to align content */
-  align-items: center;        /* Vertical center */
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
-  height: 40px;               /* Fixed height for uniformity */
-  padding: 10px 16px;         /* Consistent padding */
+  height: 40px;
+  padding: 10px 16px;
   font-size: 18px;
   line-height: 1;
   border-radius: 5px;
@@ -140,12 +143,10 @@ nav button {
   background: none;
   box-sizing: border-box;
   font-weight: 500;
-  font-family:  Arial, sans-serif;
+  font-family: Arial, sans-serif;
   transition: all var(--transition-speed) ease;
   vertical-align: middle;
 }
-
-
 
 /* Hover effect for all nav items */
 nav a:hover,
@@ -170,6 +171,24 @@ nav button:hover {
   display: none;
 }
 
+/* Hamburger menu button styling */
+.hamburger-menu {
+  display: none; /* Hide by default on large screens */
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: var(--white);
+  cursor: pointer;
+  padding: 10px;
+  margin-left: auto; /* Push it to the right */
+}
+
+/* Styles for the navigation menu when it's open */
+nav.open {
+  display: flex; /* Show the menu */
+}
+
+
 /* ===== Hero Section ===== */
 section.hero {
   position: relative;
@@ -183,13 +202,16 @@ section.hero {
   min-height: 80vh;
 }
 
-section.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--dark-color);
-  clip-path: polygon(0% 0%, 60% 50%, 50% 100%, 100% 100%, 100% 0%);
-  z-index: -1;
+/* Background gradient for large screens only */
+@media (min-width: 1361px) {
+  section.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--dark-color);
+    clip-path: polygon(0% 0%, 60% 50%, 50% 100%, 100% 100%, 100% 0%);
+    z-index: -1;
+  }
 }
 
 .hero-image {
@@ -205,8 +227,13 @@ section.hero::before {
 
 .hero-text {
   max-width: 600px;
-  transform: translate(50px, 20px);
   flex: 1 1 100%;
+}
+
+@media (min-width: 1361px) {
+  .hero-text {
+    transform: translate(50px, 20px);
+  }
 }
 
 .hero-text h1,
@@ -299,7 +326,10 @@ section.solutions {
   background: var(--white);
   padding: 40px 30px 30px;
   border-radius: var(--border-radius-lg);
-  width: 360px;
+  width: 360px; /* Fixed width for large screens */
+  flex-grow: 1; /* Allow cards to grow if space is available */
+  flex-shrink: 1; /* Allow cards to shrink to fit */
+  flex-basis: 360px; /* Optimal size for large screens */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -377,8 +407,8 @@ section.pricing {
   background: var(--white);
   padding: 40px 30px;
   border-radius: var(--border-radius-lg);
-  flex: 1;
-  min-width: 260px;
+  flex: 1 1 260px; /* Use flex-basis for better control */
+  min-width: 260px; /* Maintain minimum width for a good look on tablets */
   box-shadow: var(--box-shadow-sm);
   transition: transform var(--transition-speed) ease,
     box-shadow var(--transition-speed) ease;
@@ -623,24 +653,54 @@ footer {
 
 /* ===== Responsive Design ===== */
 @media (max-width: 1360px) {
+  /* Common adjustments for screens below 1360px */
+  header,
+  section.hero,
+  section.solutions,
+  section.pricing,
+  footer {
+    padding: 30px 20px;
+  }
+
   .hero-image {
     display: none;
   }
+  
   .hero-text {
     transform: none;
     margin: 0 auto;
     text-align: center;
+    max-width: 100%;
   }
-  body::before {
-    display: none; /* Hide the gradient on smaller screens for a better look */
+
+  /* Adjustments for solutions and pricing sections */
+  .solutions-wrapper,
+  .pricing-wrapper {
+    padding: 30px 20px;
+  }
+
+  .solutions-wrapper h2,
+  .pricing-wrapper h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+  }
+
+  /* Responsive card layouts */
+  /* .solutions-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  } */
+  
+  .solution-card,
+  .pricing-card {
+    min-width: 0; /* Override fixed minimums to prevent overflow */
+    max-width: 100%; /* Ensure cards don't exceed container width */
+    flex-basis: auto; /* Let flexbox decide size based on content and available space */
   }
 }
 
 @media (max-width: 1024px) {
-  .hero-text {
-    transform: none;
-    margin-bottom: 30px;
-  }
   .hero-text h1 {
     font-size: 48px;
   }
@@ -653,59 +713,74 @@ footer {
 }
 
 @media (max-width: 768px) {
+  /* Additional adjustments for mobile and tablets */
   header {
-    padding: 10px 20px;
+    flex-direction: row; /* Keep logo and hamburger button on one line */
+    padding: 20px;
   }
-  nav a {
-    margin: 0 10px;
-    font-size: 16px;
+  
+  /* Show the hamburger menu icon */
+  .hamburger-menu {
+      display: block;
   }
+
+  /* Hide the regular navigation menu */
+  header nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 15px;
+      gap: 10px;
+      position: absolute;
+      top: 60px; /* Adjust as needed */
+      left: 0;
+      background-color: var(--dark-color);
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 99;
+  }
+
+  /* Style the links and buttons within the collapsed menu */
+  header nav a,
+  header nav button {
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      font-size: 16px;
+  }
+
   section.hero {
-    padding: 40px 0;
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
+  .hero-text h1 {
+    font-size: 40px;
+  }
+  .hero-text h2 {
+    font-size: 28px;
+  }
+
+  .footer-container {
     flex-direction: column;
     text-align: center;
+    gap: 30px;
   }
-  .hero-text,
-  .hero-image {
-    max-width: 100%;
-    transform: none;
-  }
-  .solutions-wrapper,
-  .pricing-wrapper {
-    padding: 30px 20px;
-  }
-  .solutions-wrapper h2,
-  .pricing-wrapper h2 {
-    font-size: 36px;
-  }
-  .pricing-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  .pricing-card {
-    width: 100%;
-    max-width: 380px;
-  }
-  footer {
-    padding: 40px 20px;
+
+  .social-icons {
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .hero-text h1 {
-    font-size: 36px;
+    font-size: 32px;
   }
   .hero-text h2 {
     font-size: 24px;
+    margin: 10px 0;
   }
   .hero-text p {
     font-size: 16px;
-  }
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  nav a {
-    margin: 8px 0;
   }
 }

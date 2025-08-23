@@ -241,3 +241,12 @@ if (trackPaymentsBtn) {
     handleRedirect(redirectURL);
   });
 }
+
+const hamburgerBtn = document.querySelector(".hamburger-menu");
+const navMenu = document.querySelector("nav");
+
+hamburgerBtn.addEventListener("click", () => {
+    navMenu.classList.toggle("open");
+    const isExpanded = hamburgerBtn.getAttribute('aria-expanded') === 'true';
+    hamburgerBtn.setAttribute('aria-expanded', !isExpanded);
+});
