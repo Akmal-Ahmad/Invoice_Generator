@@ -15,7 +15,7 @@ app.use(express.json());
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("✅ MongoDB connected"))
+.then(() => console.log("MongoDB connected"))
 .catch(err => console.error("MongoDB connection error:", err));
 
 // User schema
@@ -45,7 +45,7 @@ if (!JWT_SECRET) {
   process.exit(1);
 }
 
-// Routes - using simple paths
+// Routes
 app.post("/api/auth", async (req, res) => {
   try {
     const { email, password, isLogin } = req.body;
