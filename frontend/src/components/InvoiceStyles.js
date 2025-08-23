@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     color: "#000000ff",
   },
 
-  // Header
+  
   header: {
     fontSize: 22,
     fontWeight: "bold",
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   invoiceInfo: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    gap: 20, // space between the two pieces of info
+    gap: 20, 
     marginBottom: 5,
   },
   invoiceLabel: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
 
   
 
-  // Sections
+
   section: {
     marginBottom: 15,
     padding: 10,
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     color: "#000000ff",
   },
 
-  // Table
+
   table: {
     display: "table",
     width: "auto",
@@ -102,7 +102,7 @@ export const styles = StyleSheet.create({
     textAlign: "right",
   },
 
-  // Totals & Payment
+
   totalsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -130,7 +130,7 @@ export const styles = StyleSheet.create({
     color: "#111827",
   },
 
-  // Logo
+
   logo: {
     width: 100,
     height: 50,

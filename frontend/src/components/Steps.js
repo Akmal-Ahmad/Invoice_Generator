@@ -10,7 +10,6 @@ import { PDFDownloadLink, pdf } from "@react-pdf/renderer";
 import { UserContext } from "../UserContext";
 
 function Toast({ message, onClose }) {
-  // Auto close after 3 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       onClose();
@@ -40,14 +39,12 @@ function Toast({ message, onClose }) {
 export default function Steps() {
   const { user } = useContext(UserContext);
 
-  // Header state
   const [header, setHeader] = useState({
     logo: null,
     invoiceNo: "",
     invoiceDate: "",
   });
 
-  // Billed By state
   const [billedBy, setBilledBy] = useState({
     country: "",
     businessName: "",
@@ -58,7 +55,6 @@ export default function Steps() {
     postalCode: "",
   });
 
-  // Billed To state
   const [billedTo, setBilledTo] = useState({
     country: "",
     businessName: "",
@@ -69,26 +65,21 @@ export default function Steps() {
     postalCode: "",
   });
 
-  // Items state
   const [items, setItems] = useState([
     { description: "", qty: 1, rate: 0, tax: 0, gst: 0, vat: 0, discount: 0 },
   ]);
 
-  // Payment state
   const [payment, setPayment] = useState({
     paymentStatus: "paid",
     dueDate: "",
     amountPaid: "",
   });
 
-  // PDF snapshot and key
   const [pdfData, setPdfData] = useState(null);
   const [pdfKey, setPdfKey] = useState(0);
 
-  // Toast message state
   const [toastMessage, setToastMessage] = useState(null);
 
-  // Compute grand total
   const computeGrandTotal = (list) =>
     list.reduce((sum, item) => {
       const amount = item.qty * item.rate;
@@ -102,14 +93,12 @@ export default function Steps() {
 
   const grandTotal = computeGrandTotal(items);
 
-  // Handle item change
   const handleItemChange = (i, field, value) => {
     const updated = [...items];
     updated[i][field] = field === "description" ? value : parseFloat(value) || 0;
     setItems(updated);
   };
 
-  // Add item
   const addItem = () => {
     setItems([
       ...items,
@@ -117,14 +106,11 @@ export default function Steps() {
     ]);
   };
 
-  // Remove item
   const removeItem = (i) => setItems(items.filter((_, idx) => idx !== i));
 
-  // Save invoice to database for logged-in users
   const saveInvoiceToDB = async () => {
     const token = localStorage.getItem("jwtToken");
 
-    // If no token, treat as guest — skip DB save, no logout alert
     if (!token) {
       console.log("Guest user - skipping saving invoice to database.");
       return;
@@ -141,7 +127,6 @@ export default function Steps() {
       billedTo,
       payment: {
         ...payment,
-        // Ensure amountPaid is properly set for "paid" status
         amountPaid: payment.paymentStatus === "paid" ? grandTotal : payment.amountPaid,
       },
       grandTotal,
@@ -202,7 +187,6 @@ export default function Steps() {
     window.open(url, "_blank");
   };
 
-  // Handle Track Payments button click with toast for unauthorized users
   const handleTrackPayments = () => {
     if (!user?.email) {
       setToastMessage("You need to log in to track payments");

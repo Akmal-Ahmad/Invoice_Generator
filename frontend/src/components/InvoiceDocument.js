@@ -2,7 +2,6 @@ import React from "react";
 import { Page, Text, View, Document, Image } from "@react-pdf/renderer";
 import { styles } from "./InvoiceStyles";
 
-/** Utilities */
 const safeStr = (v) => (v || v === 0 ? String(v) : "");
 const safeNum = (v, fallback = 0) => {
   const n = Number(v);
@@ -32,14 +31,14 @@ const formatPaymentStatus = (status) => {
   return mapping[s] || safeStr(status).replace(/_/g, " ");
 };
 
-// Updated helper for address formatting
+
 const formatAddress = (data) => {
   const { address, city, state, postalCode, country } = data;
   const parts = [address, city, state, postalCode, country].filter(Boolean);
-  return parts.join(", "); // single-line, no "Address:" prefix
+  return parts.join(", "); 
 };
 
-/** Invoice Component */
+
 export default function InvoiceDocument({
   header = {},
   billedBy = {},
