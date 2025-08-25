@@ -13,7 +13,7 @@ Before you begin, make sure you have the following installed:
 Node.js (v14 or higher recommended)
 <br/>
 <br/>
-A Database (like mongodb or sql)
+A Database (MongoDB, if you dont want to edit the code to implement other database)
 <br/>
 <br/>
 Git
@@ -31,12 +31,15 @@ Steps :=
    Run: npm install for both frontend and backend folders (This will install required packages like express, pdf-lib, react, etc.)
    <br/>
    <br/>
-3. Start the Server<br/>
+3. Make .env in backend root and put your own JWT_SECRET and MONGO_URI<br/>
+   <br/>
+   <br/>
+4. Start the Server<br/>
    Run: node server.js
    <br/>
    <br/>
-4. Start the ReactApp<br/>
+5. Start the ReactApp<br/>
    Run: npm start
    <br/>
    <br/>
-5. Start the Localserver and open hero.html
+6. Start the Localserver and open hero.html
